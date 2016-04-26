@@ -18,11 +18,9 @@
 					<div class="flexslider">
 					<?php foreach($daftar_produk as $p){ ?>
 						<ul class="slides">
-							<li><img src="<?php echo base_url($p->gbr_produk); ?>" alt="slide1"></li>
-							<li><img src="<?php echo base_url($p->gbr_produk); ?>" alt="slide2"></li>
-							<li><img src="<?php echo base_url($p->gbr_produk); ?>" alt="slide3"></li>
+							<?php echo  "<li><img src=". base_url($p->gbr_produk) ." alt='slide1'></li>"; ?>
 						</ul>
-						<?php } ?>
+					<?php } ?>
 					</div><!--end flexslider-->
 				</div><!--end span8-->
 

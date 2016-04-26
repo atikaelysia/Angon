@@ -280,8 +280,6 @@
 	<!-- End Sidebar Widget-->
 
 
-	
-	================================================== -->
 	<script src="<?php echo base_url(); ?>ecom/ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>ecom/ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
     <!-- jQuery.Cookie -->
