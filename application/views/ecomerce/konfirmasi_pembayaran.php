@@ -62,7 +62,7 @@
 												<option value="">Pilih Bank</option>
 												<option value="Bank Mandiri">Bank Mandiri</option>
 												<option value="Bank Central Asia">Bank Central Asia</option>
-												<option value="Bank Negara Indonesia">Bank Negara Indonesia</option>
+												<option value="Bank Nasional Indonesia">Bank Nasional Indonesia</option>
 												<option value="Bank Rakyat Indonesia">Bank Rakyat Indonesia</option>
 											</select>
 								    </div>
@@ -97,6 +97,7 @@
 						<li><a class="invarseColor" href="<?php echo base_url();?>ecomerce/konfirmasi_pembayaran"><i class="icon-caret-right"></i> Konfirmasi Pembayaran</a></li>
 						<li><a class="invarseColor" href="<?php echo base_url();?>ecomerce/konfirmasi/konfirmasi_penerimaan"><i class="icon-caret-right"></i> Konfirmasi Penerimaan</a></li>
 						<li><a class="invarseColor" href="<?php echo base_url();?>ecomerce/konfirmasi/histori_pemesanan"><i class="icon-caret-right"></i> Histori Pemesanan</a></li>
+						<li><a class="invarseColor" href="<?php echo base_url();?>manage/return_dana"><i class="icon-caret-right"></i> Pengembalian Dana</a></li>
 					</ul>
 				</div>
 

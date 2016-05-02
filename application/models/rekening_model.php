@@ -4,9 +4,8 @@
 	var $details;
 
 	public function insert_rekening($data){	
-
 		$insert = $this->db->insert('rekening', $data); 
-   		 return $insert;
+   		return $insert;
    			 
 	}
 	

@@ -43,25 +43,41 @@ public function __construct() {
              );
             $this->konfirmasi_model->insert_pembayaran($data);
 
-                // $notif_request = array(                             //notif
-                //         'isi_pesan'     => 'ada 1 request tarik dana baru',      //notif
-                //         'waktu'         => 'skrg',                      //notif
-                //         //'id_detail_transaksi'   => $id_detail_trans     //notif
-                //         );                                              //notif
-                //     $this->buat_notifikasi_admin($notif_request);
+                $notif_request = array(                             //notif
+                    'isi_pesan'     => 'ada 1 konfirmasi pembayaran',      
+                    'waktu'         =>  date('Y-m-d'),                     
+                    'link'          =>  'ecomerce/konfirmasi_pembayaran/menampilkan_pembayaran'
+                        );                                              
+                    $this->buat_notifikasi_admin($notif_request);
 
-            
         redirect("ecomerce/konfirmasi_pembayaran");
-        // $this->buat_notifikasi_admin('tarik dana');
  }
 
  public function menampilkan_pembayaran(){
      $bayar = $this->konfirmasi_model->select_pembayaran();
      $this->load->vars('b', $bayar);
-     $this->load->view('admin/lihat_pembayaran');
+     $this->load->view('manage/lihat_konfirmasibayar');
 
  }
 
+ public function update_status() {
+    $id = $this->uri->segment(4);
+    $status = $this->input->post('req_status');
+    $this->konfirmasi_model->update_status($id, $status);
+
+    $result = $this->konfirmasi_model->select_detnotif_produk($id);
+    foreach ($result as $r) {
+        $notif_request = array(                                         //notif untuk penjual
+                    'isi_pesan'     => 'ada 1 pembelian baru',      
+                    'waktu'         =>  date('Y-m-d'),  
+                    'kepada'        =>  $r->id_user,                   
+                    'link'          =>  'ecomerce/konfirmasi_pembayaran/menampilkan_pembayaran'
+                        );                                              
+        $this->buat_notifikasi_penjual($notif_request);
+    }
+  
+    redirect('ecomerce/konfirmasi_pembayaran/menampilkan_pembayaran');
+ }
 
 
 }

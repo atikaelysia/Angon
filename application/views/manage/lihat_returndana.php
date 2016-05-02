@@ -104,76 +104,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									New user registered. </span>
 									</a>
 								</li>
-								<li>
-									<a href="javascript:;">
-									<span class="time">3 mins</span>
-									<span class="details">
-									<span class="label label-sm label-icon label-danger">
-									<i class="fa fa-bolt"></i>
-									</span>
-									Server #12 overloaded. </span>
-									</a>
-								</li>
-								<li>
-									<a href="javascript:;">
-									<span class="time">10 mins</span>
-									<span class="details">
-									<span class="label label-sm label-icon label-warning">
-									<i class="fa fa-bell-o"></i>
-									</span>
-									Server #2 not responding. </span>
-									</a>
-								</li>
-								<li>
-									<a href="javascript:;">
-									<span class="time">14 hrs</span>
-									<span class="details">
-									<span class="label label-sm label-icon label-info">
-									<i class="fa fa-bullhorn"></i>
-									</span>
-									Application error. </span>
-									</a>
-								</li>
-								<li>
-									<a href="javascript:;">
-									<span class="time">2 days</span>
-									<span class="details">
-									<span class="label label-sm label-icon label-danger">
-									<i class="fa fa-bolt"></i>
-									</span>
-									Database overloaded 68%. </span>
-									</a>
-								</li>
-								<li>
-									<a href="javascript:;">
-									<span class="time">3 days</span>
-									<span class="details">
-									<span class="label label-sm label-icon label-danger">
-									<i class="fa fa-bolt"></i>
-									</span>
-									A user IP blocked. </span>
-									</a>
-								</li>
-								<li>
-									<a href="javascript:;">
-									<span class="time">4 days</span>
-									<span class="details">
-									<span class="label label-sm label-icon label-warning">
-									<i class="fa fa-bell-o"></i>
-									</span>
-									Storage Server #4 not responding dfdfdfd. </span>
-									</a>
-								</li>
-								<li>
-									<a href="javascript:;">
-									<span class="time">5 days</span>
-									<span class="details">
-									<span class="label label-sm label-icon label-info">
-									<i class="fa fa-bullhorn"></i>
-									</span>
-									System Error. </span>
-									</a>
-								</li>
+								
 								<li>
 									<a href="javascript:;">
 									<span class="time">9 days</span>
@@ -326,7 +257,9 @@ License: You must have a valid license purchased only from themeforest(the above
 							<i class="icon-basket"></i>
 							Lihat Pesanan</a>
 						</li>
-					
+						
+						
+						
 					</ul>
 				</li>
 				<?php if($this->session->userdata('kategori_user')=='Peternak') {
@@ -473,7 +406,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- END STYLE CUSTOMIZER -->
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			Request<small>Return Dana</small>
+			Request<small>Tarik Dana</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -483,11 +416,11 @@ License: You must have a valid license purchased only from themeforest(the above
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="#">Manage Keluhan</a>
+						<a href="#">Manage Dana</a>
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="#">Return Dana</a>
+						<a href="#">Request Tarik Dana</a>
 					</li>
 				</ul>
 				
@@ -558,9 +491,6 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
 									</td>
 									
-									
-									
-									
 									<td>
 										<select name="order_status" class="form-control form-filter input-sm">
 											<?php  
@@ -587,25 +517,22 @@ License: You must have a valid license purchased only from themeforest(the above
 								<tr role="row" class="heading">
 									
 									<th width="5%">
-										 No Return
+										 Id Return Dana
 									</th>
 									<th width="15%">
-										 No Order
+										 Nomor Order
 									</th>
 									<th width="15%">
-										 Bank
+										 Nama Bank
 									</th>
 									<th width="10%">
-										 Nama Pemilik
+										 Nama Akun
 									</th>
 									<th width="10%">
-										 No Rekening
+										 Nomor Rekening
 									</th>
 									<th width="10%">
 										 Status
-									</th>
-									<th width="10%">
-										Aksi
 									</th>
 									
 								</tr>
@@ -613,44 +540,28 @@ License: You must have a valid license purchased only from themeforest(the above
 								</thead>
 								<tbody>
 									<?php
-									
-
-
-									//isi nya return dana
-
-
-
-
-									if (is_array($daftar_transaksi) || is_object($daftar_transaksi)) {
-										foreach($daftar_transaksi as $order){
+										foreach($d as $reqreturn){
 											?>
 											<tr>
-												<td><a href="<?php echo base_url(); ?>manage/pesanan/detail_pesanan/<?php echo $order->id_transaksi; ?>"><?php echo $order->id_transaksi; ?></a></td>
-		           						 		<td><?php echo $order->tgl_transaksi; ?></td>
-		            							<td><?php echo $order->nama_user; ?></td>
-		          						  		<td><?php echo $order->alamat_pengiriman; ?></td>
+												<td><?php echo $reqreturn->id_return; ?></a></td>
+		           						 		<td><?php echo $reqreturn->no_order; ?></td>
+		           						 		<td><?php echo $reqreturn->bank; ?></td>
+		          						  		<td><?php echo $reqreturn->nama_pemilik; ?></td>
+		           						 		<td><?php echo $reqreturn->no_rekening; ?></td>
 		           						 		<td>
-		           						 			<form action="<?php echo base_url(); ?>manage/pesanan/update_data/<?php echo $order->id_transaksi; ?>" method="post">
+		           						 			<form action="<?php echo base_url(); ?>manage/return_dana/update_status/<?php echo $reqreturn->id_return; ?>" method="post">
 
-			           						 			<select name="order_status" class="form-control form-filter input-sm" onchange="this.form.submit()">
-															<!-- <option value="<?php echo $order->status; ?>"><?php echo $order->status; ?></option> -->
-															<option value="Pending" <?php if($order->status == "Pending") echo "selected"; ?>>Pending</option>
-															<option value="Terbayar" <?php if($order->status == "Terbayar") echo "selected"; ?>>Terbayar</option>
-															<option value="Terkirim" <?php if($order->status == "Terkirim") echo "selected"; ?>>Terkirim</option>
+			           						 			<select name="req_status" class="form-control form-filter input-sm" onchange="this.form.submit()">
+															<option value="Belum Diproses" <?php if($reqreturn->status == "Belum Diproses") echo "selected"; ?>>Belum Diproses</option>
+															<option value="Sedang diproses" <?php if($reqreturn->status == "Sedang diproses") echo "selected"; ?>>Sedang diproses</option>
+															<option value="Selesai" <?php if($reqreturn->status == "Selesai") echo "selected"; ?>>Selesai</option>
 														</select>
 													</form>
 		           						 		</td>
-												<td>
-													<div class="margin-bottom-5">
-														
-														<button class="btn btn-sm yellow filter-submit margin-bottom" type="submit" formaction="<?php echo base_url(); ?>manage/pesanan/detail_pesanan/<?php echo $order->id_transaksi; ?>" ><i class=""></i>Lihat Detail</button>
-													</div>
-														<button class="btn btn-sm red filter-cancel"><i class="fa fa-times"></i>Tolak Pesanan</button>
-												</td> 
+												
 		       							 	</tr>
 		       							 	<?php 
 		       							}
-		       						} 
 		       						?>
 									   
 								</tbody>

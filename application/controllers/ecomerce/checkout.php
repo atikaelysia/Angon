@@ -35,29 +35,19 @@ public function __construct() {
 			// echo $this
 
 			$produk = $this->produk_model->find($items['id']); //ngefind produk sing idne iki
-
-			$notif_penjual = array(								//notif
- 				'isi_pesan'		=> 'ada 1 pembelian baru',		//notif
- 				'waktu'			=> 'skrg',						//notif
- 				'kepada'		=> $produk->id_user,			//notif
- 				'id_detail_transaksi'	=> $this->last_id_detail_trans		//notif
- 				);												//notif
- 			$this->buat_notifikasi_penjual($notif_penjual);
-
+			
 		}
 		$this->cart->destroy();
-
-
 
  		if($this->last_id_trans){	
 
  			$notif_admin = array(								//notif
- 				'isi_pesan'		=> 'ada 1 pembelian baru',		//notif
- 				'waktu'			=> 'skrg',						//notif
- 				'id_transaksi'	=> $this->last_id_trans					//notif
- 				);												//notif
+ 				'isi_pesan'		=> 'ada 1 pembelian baru',		
+ 				'waktu'			=> date('Y-m-d'),						
+ 				'link'			=> 'manage/pesanan/detail_pesanan/'.$this->last_id_trans					
+ 				);												
 
- 			$this->buat_notifikasi_admin($notif_admin);						//notif
+ 			$this->buat_notifikasi_admin($notif_admin);	
 
  			$this->summary();
 
@@ -65,9 +55,9 @@ public function __construct() {
  			echo "error123";
  		}
 	}
-
 	
  }
+
  public function summary(){
 
  	$sum['sum']= $this->transaksi_model->pesanan_terakhir($this->last_id_trans, $this->last_id_detail_trans);

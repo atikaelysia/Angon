@@ -24,11 +24,11 @@ public function __construct() {
  }
 
  public function konfirmasi_penerimaan(){
-      
-
-	   if($this->input->post('submit')){
+	   
+     if($this->input->post('submit')){
       $id=$this->input->post("id");
       $this->transaksi_model->update_status_penerimaan($id);
+      $this->transaksi_model->tambah_saldo($id);
       $this->session->set_flashdata('message', 'Terimakasih telah membeli di Angon');
       redirect('ecomerce/konfirmasi');
     }else{

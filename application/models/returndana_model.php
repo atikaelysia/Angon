@@ -20,6 +20,12 @@
 		$this->db->from($this->table);
 		return $this->db->get()->result();
 	}
-	
+
+	public function update_status($id, $status){
+    	$update_status = array('status' => $status);
+	    $this->db->where('id_return', $id);
+	    $this->db->update('return_dana', $update_status);
+    }
+
 }
 ?>

@@ -283,13 +283,27 @@ License: You must have a valid license purchased only from themeforest(the above
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="<?php echo base_url(); ?>manage/return_dana/select">
+							<a href="<?php echo base_url(); ?>manage/return_dana/select_returndana">
 							<i class="icon-home"></i>
 							Lihat Request Return Dana</a>
 						</li>
 					</ul>
 				</li>
 				
+				<li>
+					<a href="javascript:;">
+					<i class="icon-pencil"></i>
+					<span class="title">Konfirmasi Pembayaran</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="<?php echo base_url(); ?>ecomerce/konfirmasi_pembayaran/menampilkan_pembayaran">
+							<i class="icon-home"></i>
+							Lihat Konfirmasi Pembayaran</a>
+						</li>
+					</ul>
+				</li>
 				
 			</ul>
 			-->

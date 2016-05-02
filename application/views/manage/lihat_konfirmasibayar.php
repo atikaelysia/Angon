@@ -406,7 +406,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- END STYLE CUSTOMIZER -->
 			<!-- BEGIN PAGE HEADER-->
 			<h3 class="page-title">
-			Request<small>Tarik Dana</small>
+			Konfirmasi<small>Pembayaran</small>
 			</h3>
 			<div class="page-bar">
 				<ul class="page-breadcrumb">
@@ -420,7 +420,7 @@ License: You must have a valid license purchased only from themeforest(the above
 						<i class="fa fa-angle-right"></i>
 					</li>
 					<li>
-						<a href="#">Request Tarik Dana</a>
+						<a href="#">Konfirmasi Pembayaran</a>
 					</li>
 				</ul>
 				
@@ -517,19 +517,22 @@ License: You must have a valid license purchased only from themeforest(the above
 								<tr role="row" class="heading">
 									
 									<th width="5%">
-										 Id Request
+										 Id Konfirmasi
 									</th>
 									<th width="15%">
-										 Jumlah Penarikan
+										 id transaksi
 									</th>
 									<th width="15%">
-										 Nomor Rekening
+										 Total
+									</th>
+									<th width="15%">
+										 Nama Bank
 									</th>
 									<th width="10%">
 										 Nama Akun
 									</th>
 									<th width="10%">
-										 Nama Bank
+										 Nomor Rekening
 									</th>
 									<th width="10%">
 										 Status
@@ -538,27 +541,27 @@ License: You must have a valid license purchased only from themeforest(the above
 								</tr>
 								
 								</thead>
+
 								<tbody>
 									<?php
-										foreach($d as $reqdana){
+										foreach($b as $bayar){
 											?>
 											<tr>
-												<td><?php echo $reqdana->id_tarikdana; ?></a></td>
-		           						 		<td><?php echo $reqdana->jumlah_tarikdana; ?></td>
-		           						 		<td><?php echo $reqdana->no_rekening; ?></td>
-		            							<td><?php echo $reqdana->nama_akun; ?></td>
-		          						  		<td><?php echo $reqdana->nama_bank; ?></td>
+												<td><?php echo $bayar->id_konfirmasi_pembayaran; ?></td>
+		           						 		<td><?php echo $bayar->id_transaksi; ?></td>
+		           						 		<td><?php echo $bayar->total_bayar; ?></td>
+		           						 		<td><?php echo $bayar->nama_bank; ?></td>
+		          						  		<td><?php echo $bayar->nama_akun; ?></td>
+		           						 		<td><?php echo $bayar->no_rekening; ?></td>
 		           						 		<td>
-		           						 			<form action="<?php echo base_url(); ?>manage/tarikdana/update_status/<?php echo $reqdana->id_tarikdana; ?>" method="post">
+		           						 			<form action="<?php echo base_url(); ?>ecomerce/konfirmasi_pembayaran/update_status/<?php echo $bayar->id_transaksi; ?>" method="post">
 
 			           						 			<select name="req_status" class="form-control form-filter input-sm" onchange="this.form.submit()">
-															<option value="Belum Diproses" <?php if($reqdana->status == "Belum Diproses") echo "selected"; ?>>Belum Diproses</option>
-															<option value="Sedang diproses" <?php if($reqdana->status == "Sedang diproses") echo "selected"; ?>>Sedang diproses</option>
-															<option value="Selesai" <?php if($reqdana->status == "Selesai") echo "selected"; ?>>Selesai</option>
+															<option value="Pending" <?php if($bayar->status == "Pending") echo "selected"; ?>>Pending</option>
+															<option value="Terbayar" <?php if($bayar->status == "Terbayar") echo "selected"; ?>>Terbayar</option>
 														</select>
 													</form>
 		           						 		</td>
-												
 		       							 	</tr>
 		       							 	<?php 
 		       							}

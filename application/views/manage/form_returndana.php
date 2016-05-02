@@ -128,7 +128,6 @@
 					</div><!--end checkout-outer-->
 
 
-
 					<div class="checkout-outer">
 						<div class="checkout-header">
 							<a href="#" class="invarseColor pull-right" data-toggle="tooltip" data-placment="top" data-title="EDIT" style="margin-right:12px; color:#333; font-size:13px;"><i class="icon-pencil"></i></a>
@@ -171,8 +170,9 @@
 
 								    <div class="control-group" align="center">
 							    <div class="controls">
-								    <input type="submit" name="submit" class="btn btn-primary" values="Checkout">
+								    <input type="submit" name="submit" class="btn btn-primary" value="Request">
 							    </div>
+
 								</div><!--end control-group-->
 
 								</div><!--end control-group-->

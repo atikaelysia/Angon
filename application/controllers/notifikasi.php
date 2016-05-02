@@ -11,7 +11,7 @@ class Notifikasi extends CI_Controller {
         $notifikasi = $this->notifikasi_model->select_notif_admin();
         foreach ($notifikasi as $n) {
         	echo '<li>
-            <a href="'. base_url() .'manage/pesanan/detail_notifikasi/'.$n->id_transaksi.'">
+            <a href="'. base_url(). $n->link .'">
                 <span class="time">'.$n->waktu.'</span>
                 <span class="details">
                     <span class="label label-sm label-icon label-success">
@@ -29,11 +29,11 @@ class Notifikasi extends CI_Controller {
     }
 
 //notif untuk penjual
-     public function get_penjual() {
+    public function get_penjual() {
         $notifikasi = $this->notifikasi_model->select_notif_penjual();
         foreach ($notifikasi as $n) {               
             echo '<li>
-            <a href="'. base_url() .'manage/pesanan/detail_notifikasi/'.$n->id_detail_transaksi.'">              
+            <a href="'. base_url(). $n->link .'">              
                 <span class="time">'.$n->waktu.'</span>
                 <span class="details">
                     <span class="label label-sm label-icon label-success">

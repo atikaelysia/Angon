@@ -9,7 +9,7 @@ public function __construct() {
  }
 
  public function lihat_dana(){
-    $dana = $this->dana->menampilkan_saldo();
+    $dana = $this->dana->menampilkan_saldo($this->session->userdata('id_user'));
     $rekening = $this->rekening_model->menampilkan_rekening();
     $this->load->vars('d', $dana);
     $this->load->vars('r', $rekening);
@@ -36,11 +36,10 @@ public function __construct() {
         }
 
         
-        if ($this->dana->verifikasi_password($katasandi) > 0) { // jika password benar
-            $saldo = $this->dana->menampilkan_saldo()->saldo;
+        if ($this->dana->verifikasi_password($katasandi) > 0) {     // jika password benar
+            $saldo = $this->dana->menampilkan_saldo($this->session->userdata('id_user'))->saldo;
             $sisa = $saldo - $jumlahpenarikan;
-            if($sisa >= 0){ // jika uang yg diambil benar (mencukupi)
-                $this->dana->update_saldo($sisa);
+            if($sisa >= 0){                             // jika uang yg diambil benar (mencukupi)
 
                 $data = array(
                     'jumlah_tarikdana' => $jumlahpenarikan,
@@ -48,12 +47,12 @@ public function __construct() {
                     );
                 $this->dana->insert_tarikdana($data);
 
-                // $notif_request = array(                             //notif
-                //         'isi_pesan'     => 'ada 1 request tarik dana baru',      //notif
-                //         'waktu'         => 'skrg',                      //notif
-                //         //'id_detail_transaksi'   => $id_detail_trans     //notif
-                //         );                                              //notif
-                //     $this->buat_notifikasi_admin($notif_request);
+                $notif_request = array(                                         //notif
+                        'isi_pesan'     => 'ada 1 request tarik dana baru',      
+                        'waktu'         => date('Y-m-d'),                             
+                        'link'          =>  'manage/tarikdana/menampilkan_request'
+                        );                                                      
+                    $this->buat_notifikasi_admin($notif_request);
 
             } else {
                 $this->session->set_flashdata('error', 'masukkan nilai yang sesuai');
@@ -63,7 +62,7 @@ public function __construct() {
         }
 
         redirect("manage/tarikdana/lihat_dana");
-        // $this->buat_notifikasi_admin('tarik dana');
+        
  }
 
  public function menampilkan_request(){
@@ -73,10 +72,17 @@ public function __construct() {
 
  }
 
- public function update_status($id) {
-            $status = $this->input->post('req_status');
-            $this->dana->update_status($id, $status);
-            redirect('manage/tarikdana/menampilkan_request');
+ public function update_status($id_tarikdana) {
+    $status = $this->input->post('req_status');
+    $this->dana->update_status($id_tarikdana, $status);
+
+    if($status == 'Selesai') {
+        $tarikdana = $this->dana->menampilkan_jumlah_tarik($id_tarikdana);
+        $saldo = $this->dana->menampilkan_saldo($tarikdana->id_user)->saldo;
+        $sisa = $saldo - $tarikdana->jumlah_tarikdana;
+        $this->dana->update_saldo($tarikdana->id_user, $sisa);
+    }
+    redirect('manage/tarikdana/menampilkan_request');
  }
 
 
