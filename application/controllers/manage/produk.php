@@ -9,8 +9,8 @@ public function __construct() {
 public function index()
  {
 
-    $this->load->model('m_produk');
-    $data['kat'] = $this->m_produk->kategori();
+    $this->load->model('kategori_model');
+    $data['kat'] = $this->kategori_model->drop_kategori();
   $this->load->view('manage/input_produk', $data);
  }
  
@@ -57,7 +57,8 @@ private function do_upload(){
 
 public function edit($id) {
     $this->load->model('m_produk');
-    $data['kat'] = $this->m_produk->kategori();
+    $this->load->model('kategori_model');
+    $data['kat'] = $this->kategori_model->drop_kategori();
     $produk = $this->m_produk->edit($id);
     $this->load->vars('p', $produk);
     $this->load->view('manage/edit_produk', $data);

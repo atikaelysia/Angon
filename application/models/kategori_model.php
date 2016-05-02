@@ -27,5 +27,13 @@ function kategori(){
  	$this->db->where('id_kategori_jenis',$kat);
     return $this->db->get('produk')->result();
 }
+
+
+ function drop_kategori(){
+        $this->db->select('*');
+        $this->db->from('kategori_produk');
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
 ?>

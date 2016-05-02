@@ -16,11 +16,13 @@
 
 				<div class="span8">
 					<div class="flexslider">
-					<?php foreach($daftar_produk as $p){ ?>
 						<ul class="slides">
-							<?php echo  "<li><img src=". base_url($p->gbr_produk) ." alt='slide1'></li>"; ?>
+							<?php
+							foreach($daftar_produk as $p){
+							 echo  "<li><img src=". base_url($p->gbr_produk) ." alt='slide1'></li>"; 
+							 }
+							 ?>
 						</ul>
-					<?php } ?>
 					</div><!--end flexslider-->
 				</div><!--end span8-->
 

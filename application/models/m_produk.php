@@ -96,5 +96,7 @@ class m_produk extends CI_Model {
         $this->db->delete('produk');
     }
 
+
+   
 }
 ?>

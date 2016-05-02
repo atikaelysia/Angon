@@ -45,7 +45,7 @@
 								<div class="control-group" align="center">
 							    <div class="controls">
 								    <input type="submit" class="btn btn-primary" name="submit" value="Diterima">
-								    <a href="#" class="btn btn-primary" name="submit" value="">Komplain</a>
+								    <a href="<?php echo base_url(); ?>ecomerce/produk/input_keluhan" class="btn btn-primary" name="submit" value="">Keluhan</a>
 								    <?php echo $this->session->flashdata('message');?>
 							    </div>
 								</div><!--end control-group-->

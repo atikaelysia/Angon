@@ -113,9 +113,12 @@
 					<div id="productSlider" class="carousel slide">
 						<!-- Carousel items -->
 					    <div class="carousel-inner">
-					      <div class="active item"><img src="<?php echo base_url(); ?>ecom/img/694x240.jpg" alt=""></div>
-					      <div class="item"><img src="<?php echo base_url(); ?>ecom/img/694x240.jpg" alt=""></div>
-					      <div class="item"><img src="<?php echo base_url(); ?>ecom/img/694x240.jpg" alt=""></div>
+					    	<div class="active item"><img src=""></div>
+							  <?php
+							foreach($cari_produk as $p){
+								echo "<div class='item'><img src=".base_url($p->gbr_produk)."></div>";
+							}
+							 ?>
 					    </div>
 
 					    <!-- Carousel nav -->
@@ -172,7 +175,7 @@
 							<?php foreach($cari_produk as $p){	?>
 							<li class="span3 clearfix">
 								<div class="thumbnail">
-									<a href="#"><img src="<?php echo base_url(); ?>ecom/img/212x192.jpg" alt=""></a>
+									<a href="#"><img src="<?php echo base_url($p->gbr_produk);?>" alt=""></a>
 								</div>
 								<div class="thumbSetting">
 									<div class="thumbTitle">
